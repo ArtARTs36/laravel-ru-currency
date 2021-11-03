@@ -7,4 +7,6 @@ use Illuminate\Support\Collection;
 interface CurrencyRepository
 {
     public function pluck(string $key, string $value): Collection;
+
+    public function all(): Collection;
 }
