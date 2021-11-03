@@ -20,7 +20,7 @@ class CurrencyProvider extends ServiceProvider
 
             $this->commands(FetchCoursesCommand::class);
 
-            require __DIR__ . '/../../database/seeders/CurrencySeeder.php';
+            require __DIR__ . '/../../database/seeders/RuCurrencySeeder.php';
         }
     }
 }

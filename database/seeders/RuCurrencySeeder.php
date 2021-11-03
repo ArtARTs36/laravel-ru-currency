@@ -4,7 +4,7 @@ use ArtARTs36\CbrCourseFinder\CurrencyCode;
 use ArtARTs36\LaravelRuCurrency\Models\Currency;
 use Illuminate\Database\Seeder;
 
-class CurrencySeeder extends Seeder
+class RuCurrencySeeder extends Seeder
 {
     public function run(): void
     {
