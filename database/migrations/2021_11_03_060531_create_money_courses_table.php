@@ -17,10 +17,10 @@ class CreateMoneyCoursesTable extends Migration
             $table->id();
 
             $table->unsignedBigInteger('from_currency_id');
-            $table->foreign('from_vacancy_id')->on('money__currencies')->references('id');
+            $table->foreign('from_currency_id')->on('money__currencies')->references('id');
 
             $table->unsignedBigInteger('to_currency_id');
-            $table->foreign('to_vacancy_id')->on('money__currencies')->references('id');
+            $table->foreign('to_currency_id')->on('money__currencies')->references('id');
 
             $table->integer('nominal');
             $table->float('value');
