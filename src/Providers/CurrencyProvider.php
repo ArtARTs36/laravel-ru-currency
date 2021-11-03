@@ -14,8 +14,7 @@ class CurrencyProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(Finder::class, \ArtARTs36\CbrCourseFinder\Finder::class);
-        $this->app->bind(CurrencyRepository::class, EloquentCurrencyRepository::class);
-        $this->app->bind('RuCurrencySeeder', RuCurrencySeeder::class);
+        $this->app->bind(CurrencyRepository::class, EloquentCurrencyRepository::class);;
 
         if ($this->app->runningInConsole()) {
             $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
