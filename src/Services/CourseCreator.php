@@ -26,7 +26,7 @@ class CourseCreator
         return $this->create($courses, $this->config->get('ru_currency.default'));
     }
 
-    public function create(CourseCollection $courses, string $toCurrencyCode = null): int
+    public function create(CourseCollection $courses, string $toCurrencyCode): int
     {
         $currencies = $this->currencies->pluck(Currency::FIELD_ISO_CODE, Currency::FIELD_ID);
         $records = [];
