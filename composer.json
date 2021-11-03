@@ -12,7 +12,8 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "ArtARTs36\\LaravelRuCurrency\\": "src/"
+            "ArtARTs36\\LaravelRuCurrency\\": "src/",
+            "ArtARTs36\\LaravelRuCurrency\\Database\\": "database"
         }
     },
     "authors": [
