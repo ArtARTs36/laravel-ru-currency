@@ -26,6 +26,8 @@ class CreateMoneyCoursesTable extends Migration
             $table->float('value');
 
             $table->timestamp('actual_at');
+
+            $table->unique(['from_currency_id', 'to_currency_id', 'actual_at']);
         });
     }
 

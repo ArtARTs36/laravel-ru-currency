@@ -17,12 +17,12 @@ class CourseCreator
         $this->currencies = $currencies;
     }
 
-    public function create(CourseCollection $courses, ?Currency $toCurrency = null)
+    public function create(CourseCollection $courses, ?Currency $toCurrency = null): int
     {
         $currencies = $this->currencies->pluck(Currency::FIELD_ISO_CODE, Currency::FIELD_ID);
         $records = [];
-
-        $toCurrency ??= $currencies[CurrencyCode::ISO_RUB];
+        
+        $toCurrencyId = $toCurrency === null ? $currencies[CurrencyCode::ISO_RUB] : $toCurrency->id;
 
         /** @var \ArtARTs36\CbrCourseFinder\Course $course */
         foreach ($courses as $course) {
@@ -31,7 +31,7 @@ class CourseCreator
             }
 
             $records[] = [
-                Course::FIELD_TO_CURRENCY_ID => $toCurrency->id,
+                Course::FIELD_TO_CURRENCY_ID => $toCurrencyId,
                 Course::FIELD_FROM_CURRENCY_ID => $currencies->get($course->getIsoCode()),
                 Course::FIELD_VALUE => $course->getValue(),
                 Course::FIELD_NOMINAL => $course->getNominal(),
@@ -39,6 +39,6 @@ class CourseCreator
             ];
         }
 
-        Course::query()->insert($records);
+        return Course::query()->insertOrIgnore($records);
     }
 }

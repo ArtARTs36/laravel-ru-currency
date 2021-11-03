@@ -10,7 +10,7 @@ class EloquentCurrencyRepository implements CurrencyRepository
 {
     public function pluck(string $key, string $value): Collection
     {
-        return Currency::query()->toBase()->pluck($key, $value);
+        return Currency::query()->toBase()->pluck($value, $key);
     }
 
     public function all(): Collection

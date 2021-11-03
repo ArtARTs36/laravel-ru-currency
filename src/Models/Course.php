@@ -26,6 +26,8 @@ class Course extends Model
 
     public $timestamps = false;
 
+    protected $table = 'money__courses';
+
     protected $fillable = [
         self::FIELD_FROM_CURRENCY_ID,
         self::FIELD_TO_CURRENCY_ID,
