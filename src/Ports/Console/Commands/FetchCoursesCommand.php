@@ -15,6 +15,8 @@ class FetchCoursesCommand extends Command
     {
         $date = empty($this->option('date')) ? date('y-m-d') : $this->option('date');
 
-        $creator->create($finder->getOnDate(Carbon::parse($date)));
+        $added = $creator->create($finder->getOnDate(Carbon::parse($date)));
+
+        $this->comment("Added $added courses");
     }
 }
