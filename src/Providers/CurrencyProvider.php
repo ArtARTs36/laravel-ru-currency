@@ -21,6 +21,7 @@ class CurrencyProvider extends ServiceProvider
             ->needs(ClientInterface::class)
             ->give(fn (Container $container) => $container->make(Client::class));
 
+        $this->mergeConfigFrom(__DIR__ . '/../../config/ru_currency.php', 'ru_currency');
         $this->app->bind(Finder::class, \ArtARTs36\CbrCourseFinder\Finder::class);
         $this->app->bind(CurrencyRepository::class, EloquentCurrencyRepository::class);
 
