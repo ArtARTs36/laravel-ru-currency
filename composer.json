@@ -7,7 +7,7 @@
         "artarts36/cbr-course-finder": "^1.1",
         "illuminate/database": "^8",
         "illuminate/support": "^8",
-        "illuminate/console": "^8.69"
+        "illuminate/console": "^8"
     },
     "license": "MIT",
     "autoload": {
