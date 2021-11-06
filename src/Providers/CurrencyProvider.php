@@ -29,8 +29,6 @@ class CurrencyProvider extends ServiceProvider
             $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
 
             $this->commands(FetchCoursesCommand::class);
-
-            require __DIR__ . '/../../database/Seeders/RuCurrencySeeder.php';
         }
     }
 }
