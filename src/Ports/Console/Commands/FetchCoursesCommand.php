@@ -9,7 +9,9 @@ use Illuminate\Console\Command;
 
 class FetchCoursesCommand extends Command
 {
-    protected $signature = 'money:fetch-courses {--date=}';
+    protected $signature = "money:fetch-courses {--date= : Date by format y-m-d}";
+
+    protected $description = 'Fetch currency courses from CBR';
 
     public function handle(Finder $finder, CourseCreator $creator)
     {
