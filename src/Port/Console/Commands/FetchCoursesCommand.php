@@ -32,8 +32,12 @@ class FetchCoursesCommand extends Command
 
     private function getInputDate(): \DateTimeInterface
     {
-        $date = $this->input->getOption(self::INPUT_OPTION_DATE_NAME);
+        $date = $this->option(self::INPUT_OPTION_DATE_NAME);
 
-        return Carbon::parse(empty($date) ? date(self::INPUT_OPTION_DATE_FORMAT) : $date);
+        if (! is_string($date) && $date !== '') {
+            $date = date(self::INPUT_OPTION_DATE_FORMAT);
+        }
+
+        return Carbon::parse($date);
     }
 }

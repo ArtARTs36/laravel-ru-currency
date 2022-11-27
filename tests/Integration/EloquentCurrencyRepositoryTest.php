@@ -2,7 +2,6 @@
 
 namespace ArtARTs36\LaravelRuCurrency\Tests\Integration;
 
-use ArtARTs36\LaravelRuCurrency\Model\Course;
 use ArtARTs36\LaravelRuCurrency\Model\Currency;
 use ArtARTs36\LaravelRuCurrency\Repository\EloquentCurrencyRepository;
 use ArtARTs36\LaravelRuCurrency\Tests\Feature\TestCase;
