@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMoneyCurrenciesTable extends Migration
+class CreateRuCurrencyCurrenciesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMoneyCurrenciesTable extends Migration
      */
     public function up()
     {
-        Schema::create('money__currencies', function (Blueprint $table) {
+        Schema::create('ru_currency__currencies', function (Blueprint $table) {
             $table->id();
             $table->string('title', 75);
             $table->string('iso_code', 3)->unique()->index();
@@ -28,6 +28,6 @@ class CreateMoneyCurrenciesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('money__currencies');
+        Schema::dropIfExists('ru_currency__currencies');
     }
 }

@@ -19,7 +19,7 @@ class Currency extends Model
 
     public $timestamps = false;
 
-    protected $table = 'money__currencies';
+    protected $table = 'ru_currency__currencies';
 
     protected $fillable = [
         self::FIELD_ID,
