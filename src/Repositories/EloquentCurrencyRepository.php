@@ -17,4 +17,9 @@ class EloquentCurrencyRepository implements CurrencyRepository
     {
         return Currency::all();
     }
+
+    public function insertOrIgnore(array $values): int
+    {
+        return Currency::query()->insertOrIgnore($values);
+    }
 }
