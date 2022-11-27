@@ -22,6 +22,7 @@ class Currency extends Model
     protected $table = 'money__currencies';
 
     protected $fillable = [
+        self::FIELD_ID,
         self::FIELD_ISO_CODE,
         self::FIELD_TITLE,
         self::FIELD_SYMBOL,
