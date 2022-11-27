@@ -7,6 +7,9 @@ use Illuminate\Support\Collection;
 
 class RecordingParams
 {
+    /**
+     * @param Collection<string, int> $currencies
+     */
     public function __construct(
         public Collection $currencies,
         public int $toCurrencyId,

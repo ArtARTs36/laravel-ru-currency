@@ -32,9 +32,7 @@ class CourseRecorderTest extends TestCase
             [
                 new RecordingParams(
                     new Collection([
-                        'abc' => new Currency([
-                            Currency::FIELD_ID => 2,
-                        ]),
+                        'abc' => 2,
                     ]),
                     1,
                     new CourseCollection([
