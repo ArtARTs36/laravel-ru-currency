@@ -18,7 +18,7 @@ class CourseRecorder
 
             $records[] = [
                 Course::FIELD_TO_CURRENCY_ID => $params->toCurrencyId,
-                Course::FIELD_FROM_CURRENCY_ID => $params->currencies->get($course->isoCode)->id,
+                Course::FIELD_FROM_CURRENCY_ID => $params->currencies->get($course->isoCode),
                 Course::FIELD_VALUE => $course->value,
                 Course::FIELD_NOMINAL => $course->nominal,
                 Course::FIELD_ACTUAL_AT => $params->courses->getActualDate(),
