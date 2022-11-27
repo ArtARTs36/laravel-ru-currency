@@ -26,14 +26,18 @@
         }
     ],
     "require-dev": {
-        "nunomaduro/larastan": "^2.2"
+        "nunomaduro/larastan": "^2.2",
+        "artarts36/php-cs-fixer-good-fixers": "^0.1.2"
     },
     "scripts": {
-        "stat-analyse": [
-            "./vendor/bin/phpstan analyse --memory-limit=2G"
+        "lint": [
+            "php-cs-fixer fix --dry-run --verbose --diff --ansi --allow-risky=yes"
         ],
         "test": [
             "vendor/phpunit/phpunit/phpunit"
+        ],
+        "stat-analyse": [
+            "./vendor/bin/phpstan analyse --memory-limit=2G"
         ]
     }
 }

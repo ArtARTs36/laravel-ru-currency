@@ -4,7 +4,7 @@ namespace ArtARTs36\LaravelRuCurrency\Tests\Feature;
 
 abstract class TestCase extends \ArtARTs36\LaravelRuCurrency\Tests\TestCase
 {
-    public function setup() : void
+    public function setup(): void
     {
         parent::setUp();
 
