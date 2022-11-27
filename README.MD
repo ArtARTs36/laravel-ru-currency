@@ -11,8 +11,15 @@ This package provides currencies with courses For Laravel
 ## Installation
 
 1. Run: `composer require artarts36/laravel-ru-currency`
-2. Run: `php artisan db:seed --class=ArtARTs36\LaravelRuCurrency\Database\Seeders\RuCurrencySeeder`
-3. Run: `php artisan ru-currency:fetch-courses` 
+2. Add provider `ArtARTs36\LaravelRuCurrency\Provider\CurrencyProvider::class` into your providers in app.php
+3. Run: `php artisan migrate`
+4. Run: `php artisan db:seed --class="\ArtARTs36\LaravelRuCurrency\Database\Seeders\RuCurrencySeeder"`
+5. Run: `php artisan ru-currency:fetch-courses`
+
+If you see the error `Target [Psr\Http\Client\ClientInterface] is not instantiable while building [ArtARTs36\LaravelRuCurrency\Operation\Course\Fetcher\CourseFetcher, ArtARTs36\CbrCourseFinder\Finder]`, then add the following line to your provider:
+```php
+$this->app->bind(ClientInterface::class, \GuzzleHttp\Client::class);
+```
 
 ## Commands for Application
 
