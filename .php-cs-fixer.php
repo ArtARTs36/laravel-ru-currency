@@ -6,6 +6,7 @@ return (new \PhpCsFixer\Config())
     ->registerCustomFixers([
         new \ArtARTs36\PhpCsFixerGoodFixers\Fixer\InterfaceMethodPhpDocSummaryFixer(),
         new \ArtARTs36\PhpCsFixerGoodFixers\Fixer\DisableFunctionFixer(),
+        new \ArtARTs36\PhpCsFixerGoodFixers\Fixer\LaravelCommandNoEmptyDescriptionFixer(),
     ])
     ->setRules([
         'full_opening_tag' => true,
@@ -23,6 +24,7 @@ return (new \PhpCsFixer\Config())
         '@PSR12' => true,
         'PhpCsFixerGoodFixers/interface_method_php_doc_summary' => true,
         'PhpCsFixerGoodFixers/disable_function'                 => true,
+        'PhpCsFixerGoodFixers/laravel_command_no_empty_description' => true,
         'mb_str_functions'  => true,
     ])
     ->setFinder($finder);

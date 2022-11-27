@@ -37,7 +37,7 @@ final class CourseCreatorTest extends TestCase
                             1.0,
                             1.0,
                             1.0,
-                        )
+                        ),
                     ],
                     new \DateTime('2020-01-01 14:00:00')
                 ),

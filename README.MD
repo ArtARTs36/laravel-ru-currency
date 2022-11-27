@@ -12,6 +12,12 @@ This package provides currencies with courses For Laravel
 
 Run: `composer require artarts36/laravel-ru-currency`
 
+## Commands for Application
+
+| Command                   | Description          |
+|---------------------------|----------------------|
+| ru-currency:fetch-courses | Fetch actual courses |
+
 ## Development Console
 
 | Command               | Description                        |
