@@ -10,7 +10,7 @@ class EloquentCurrencyRepository implements CurrencyRepository
 {
     public function mapIdOnIsoCode(): Collection
     {
-        return Currency::query()->toBase()->pluck(Currency::FIELD_ISO_CODE, Currency::FIELD_ID);
+        return Currency::query()->toBase()->pluck(Currency::FIELD_ID, Currency::FIELD_ISO_CODE);
     }
 
     public function all(): Collection
