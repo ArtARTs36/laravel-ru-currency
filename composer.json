@@ -24,5 +24,16 @@
             "name": "ArtARTs36",
             "email": "temicska99@mail.ru"
         }
-    ]
+    ],
+    "require-dev": {
+        "nunomaduro/larastan": "^2.2"
+    },
+    "scripts": {
+        "stat-analyse": [
+            "./vendor/bin/phpstan analyse --memory-limit=2G"
+        ],
+        "test": [
+            "vendor/phpunit/phpunit/phpunit"
+        ]
+    }
 }

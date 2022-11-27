@@ -23,5 +23,5 @@ interface CurrencyRepository
      * Insert currencies.
      * @param array<array<string, mixed>> $values
      */
-    public function insert(array $values): int;
+    public function insert(array $values): void;
 }

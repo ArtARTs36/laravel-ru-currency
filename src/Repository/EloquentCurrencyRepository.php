@@ -18,8 +18,8 @@ class EloquentCurrencyRepository implements CurrencyRepository
         return Currency::all();
     }
 
-    public function insert(array $values): int
+    public function insert(array $values): void
     {
-        return Currency::query()->insert($values);
+        Currency::query()->insert($values);
     }
 }
