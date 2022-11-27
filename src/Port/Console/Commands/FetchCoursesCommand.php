@@ -2,7 +2,7 @@
 
 namespace ArtARTs36\LaravelRuCurrency\Ports\Console\Commands;
 
-use ArtARTs36\LaravelRuCurrency\Services\CourseFetcher;
+use ArtARTs36\LaravelRuCurrency\Service\CourseFetcher;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 

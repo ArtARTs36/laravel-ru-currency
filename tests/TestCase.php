@@ -2,7 +2,7 @@
 
 namespace ArtARTs36\LaravelRuCurrency\Tests;
 
-use ArtARTs36\LaravelRuCurrency\Providers\CurrencyProvider;
+use ArtARTs36\LaravelRuCurrency\Provider\CurrencyProvider;
 use GuzzleHttp\Client;
 use Psr\Http\Client\ClientInterface;
 

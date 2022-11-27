@@ -1,13 +1,13 @@
 <?php
 
-namespace ArtARTs36\LaravelRuCurrency\Services;
+namespace ArtARTs36\LaravelRuCurrency\Service;
 
 use ArtARTs36\CbrCourseFinder\Contracts\CourseCollection;
 use ArtARTs36\LaravelRuCurrency\Contracts\CourseCreatingException;
 use ArtARTs36\LaravelRuCurrency\Contracts\CurrencyRepository;
 use ArtARTs36\LaravelRuCurrency\Exception\CurrencyNotFound;
-use ArtARTs36\LaravelRuCurrency\Models\Course;
-use ArtARTs36\LaravelRuCurrency\Models\Currency;
+use ArtARTs36\LaravelRuCurrency\Model\Course;
+use ArtARTs36\LaravelRuCurrency\Model\Currency;
 use Illuminate\Contracts\Config\Repository;
 
 class CourseCreator

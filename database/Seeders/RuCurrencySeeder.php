@@ -3,7 +3,7 @@
 namespace ArtARTs36\LaravelRuCurrency\Database\Seeders;
 
 use ArtARTs36\CbrCourseFinder\CurrencyCode;
-use ArtARTs36\LaravelRuCurrency\Models\Currency;
+use ArtARTs36\LaravelRuCurrency\Model\Currency;
 use Illuminate\Database\Seeder;
 
 class RuCurrencySeeder extends Seeder

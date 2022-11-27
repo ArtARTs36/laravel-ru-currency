@@ -1,9 +1,9 @@
 <?php
 
-namespace ArtARTs36\LaravelRuCurrency\Repositories;
+namespace ArtARTs36\LaravelRuCurrency\Repository;
 
 use ArtARTs36\LaravelRuCurrency\Contracts\CurrencyRepository;
-use ArtARTs36\LaravelRuCurrency\Models\Currency;
+use ArtARTs36\LaravelRuCurrency\Model\Currency;
 use Illuminate\Support\Collection;
 
 class EloquentCurrencyRepository implements CurrencyRepository

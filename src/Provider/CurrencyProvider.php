@@ -1,12 +1,12 @@
 <?php
 
-namespace ArtARTs36\LaravelRuCurrency\Providers;
+namespace ArtARTs36\LaravelRuCurrency\Provider;
 
 use ArtARTs36\CbrCourseFinder\Contracts\Finder as FinderContract;
 use ArtARTs36\CbrCourseFinder\Finder;
 use ArtARTs36\LaravelRuCurrency\Contracts\CurrencyRepository;
 use ArtARTs36\LaravelRuCurrency\Ports\Console\Commands\FetchCoursesCommand;
-use ArtARTs36\LaravelRuCurrency\Repositories\EloquentCurrencyRepository;
+use ArtARTs36\LaravelRuCurrency\Repository\EloquentCurrencyRepository;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use Illuminate\Contracts\Container\Container;

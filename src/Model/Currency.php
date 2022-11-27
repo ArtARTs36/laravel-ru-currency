@@ -1,6 +1,6 @@
 <?php
 
-namespace ArtARTs36\LaravelRuCurrency\Models;
+namespace ArtARTs36\LaravelRuCurrency\Model;
 
 use Illuminate\Database\Eloquent\Model;
 

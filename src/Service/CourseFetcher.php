@@ -1,6 +1,6 @@
 <?php
 
-namespace ArtARTs36\LaravelRuCurrency\Services;
+namespace ArtARTs36\LaravelRuCurrency\Service;
 
 use ArtARTs36\CbrCourseFinder\Contracts\Finder;
 use ArtARTs36\CbrCourseFinder\Contracts\SearchException;
