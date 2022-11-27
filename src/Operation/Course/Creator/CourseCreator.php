@@ -1,14 +1,14 @@
 <?php
 
-namespace ArtARTs36\LaravelRuCurrency\Service;
+namespace ArtARTs36\LaravelRuCurrency\Operation\Course\Creator;
 
 use ArtARTs36\CbrCourseFinder\Contracts\CourseCollection;
 use ArtARTs36\LaravelRuCurrency\Contracts\CourseCreatingException;
 use ArtARTs36\LaravelRuCurrency\Contracts\CourseRepository;
 use ArtARTs36\LaravelRuCurrency\Contracts\CurrencyRepository;
 use ArtARTs36\LaravelRuCurrency\Exception\CurrencyNotFound;
-use ArtARTs36\LaravelRuCurrency\Model\Course;
-use ArtARTs36\LaravelRuCurrency\Model\Currency;
+use ArtARTs36\LaravelRuCurrency\Operation\Course\Fetcher\CourseRecorder;
+use ArtARTs36\LaravelRuCurrency\Operation\Course\Fetcher\RecordingParams;
 use Illuminate\Contracts\Config\Repository;
 
 class CourseCreator
@@ -17,6 +17,7 @@ class CourseCreator
         protected CurrencyRepository $currencies,
         protected CourseRepository $courses,
         protected Repository $config,
+        protected CourseRecorder $recorder,
     ) {
         //
     }
@@ -35,27 +36,18 @@ class CourseCreator
     public function create(CourseCollection $courses, string $toCurrencyCode): int
     {
         $currencies = $this->currencies->mapIdOnIsoCode();
-        $records = [];
 
         if (! $currencies->has($toCurrencyCode)) {
             throw CurrencyNotFound::make($toCurrencyCode);
         }
 
+        /** @var int $toCurrencyId */
         $toCurrencyId = $currencies->get($toCurrencyCode);
 
-        /** @var \ArtARTs36\CbrCourseFinder\Data\Course $course */
-        foreach ($courses as $course) {
-            if (! $currencies->has($course->isoCode)) {
-                continue;
-            }
+        $records = $this->recorder->createRecords(new RecordingParams($currencies, $toCurrencyId, $courses));
 
-            $records[] = [
-                Course::FIELD_TO_CURRENCY_ID => $toCurrencyId,
-                Course::FIELD_FROM_CURRENCY_ID => $currencies->get($course->isoCode),
-                Course::FIELD_VALUE => $course->value,
-                Course::FIELD_NOMINAL => $course->nominal,
-                Course::FIELD_ACTUAL_AT => $courses->getActualDate(),
-            ];
+        if (count($records) === 0) {
+            return 0;
         }
 
         return $this->courses->insertOrIgnore($records);

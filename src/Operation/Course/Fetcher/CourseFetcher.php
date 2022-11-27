@@ -1,10 +1,11 @@
 <?php
 
-namespace ArtARTs36\LaravelRuCurrency\Service;
+namespace ArtARTs36\LaravelRuCurrency\Operation\Course\Fetcher;
 
 use ArtARTs36\CbrCourseFinder\Contracts\Finder;
 use ArtARTs36\CbrCourseFinder\Contracts\SearchException;
 use ArtARTs36\LaravelRuCurrency\Contracts\CourseCreatingException;
+use ArtARTs36\LaravelRuCurrency\Operation\Course\Creator\CourseCreator;
 use Psr\Log\LoggerInterface;
 
 class CourseFetcher
