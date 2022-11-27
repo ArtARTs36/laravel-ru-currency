@@ -12,7 +12,7 @@ class FetchCoursesCommand extends Command
 
     protected $description = 'Fetch currency courses from CBR';
 
-    public function handle(CourseFetcher $fetcher)
+    public function handle(CourseFetcher $fetcher): int
     {
         $date = empty($this->option('date')) ? date('y-m-d') : $this->option('date');
 
