@@ -6,7 +6,10 @@ use Illuminate\Support\Collection;
 
 interface CurrencyRepository
 {
-    public function pluck(string $key, string $value): Collection;
+    /**
+     * @return Collection<string, int>
+     */
+    public function mapIdOnIsoCode(): Collection;
 
     public function all(): Collection;
 

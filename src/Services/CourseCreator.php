@@ -35,7 +35,7 @@ class CourseCreator
      */
     public function create(CourseCollection $courses, string $toCurrencyCode): int
     {
-        $currencies = $this->currencies->pluck(Currency::FIELD_ISO_CODE, Currency::FIELD_ID);
+        $currencies = $this->currencies->mapIdOnIsoCode();
         $records = [];
 
         if (! $currencies->has($toCurrencyCode)) {
