@@ -11,8 +11,10 @@ use Mockery\MockInterface;
 
 final class FetchCoursesCommandTest extends TestCase
 {
+    private const COMMAND_RUN = 'ru-currency:fetch-courses';
+
     /**
-     * @covers \ArtARTs36\LaravelRuCurrency\Ports\Console\Commands\FetchCoursesCommand::handle
+     * @covers \ArtARTs36\LaravelRuCurrency\Port\Console\Commands\FetchCoursesCommand::handle
      */
     public function testHandleOnCoursesNotFound(): void
     {
@@ -25,20 +27,20 @@ final class FetchCoursesCommandTest extends TestCase
             });
 
         $this
-            ->artisan("money:fetch-courses")
+            ->artisan(self::COMMAND_RUN)
             ->expectsOutput('Created 0 courses')
             ->assertSuccessful();
     }
 
     /**
-     * @covers \ArtARTs36\LaravelRuCurrency\Ports\Console\Commands\FetchCoursesCommand::handle
+     * @covers \ArtARTs36\LaravelRuCurrency\Port\Console\Commands\FetchCoursesCommand::handle
      */
     public function testHandleOnDefaultCurrencyNotFound(): void
     {
         $this
             ->mock(CurrencyRepository::class, static function (MockInterface $mock) {
                 $mock
-                    ->shouldReceive('pluck')
+                    ->shouldReceive('mapIdOnIsoCode')
                     ->once()
                     ->andReturn(new Collection());
 
@@ -54,7 +56,7 @@ final class FetchCoursesCommandTest extends TestCase
             });
 
         $this
-            ->artisan("money:fetch-courses")
+            ->artisan(self::COMMAND_RUN)
             ->expectsOutput('Courses not created: Currency with code RUB not found')
             ->assertFailed();
     }

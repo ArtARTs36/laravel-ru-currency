@@ -4,6 +4,7 @@ namespace ArtARTs36\LaravelRuCurrency\Service;
 
 use ArtARTs36\CbrCourseFinder\Contracts\CourseCollection;
 use ArtARTs36\LaravelRuCurrency\Contracts\CourseCreatingException;
+use ArtARTs36\LaravelRuCurrency\Contracts\CourseRepository;
 use ArtARTs36\LaravelRuCurrency\Contracts\CurrencyRepository;
 use ArtARTs36\LaravelRuCurrency\Exception\CurrencyNotFound;
 use ArtARTs36\LaravelRuCurrency\Model\Course;
@@ -12,14 +13,12 @@ use Illuminate\Contracts\Config\Repository;
 
 class CourseCreator
 {
-    protected CurrencyRepository $currencies;
-
-    protected Repository $config;
-
-    public function __construct(CurrencyRepository $currencies, Repository $config)
-    {
-        $this->currencies = $currencies;
-        $this->config = $config;
+    public function __construct(
+        protected CurrencyRepository $currencies,
+        protected CourseRepository $courses,
+        protected Repository $config,
+    ) {
+        //
     }
 
     /**
@@ -59,6 +58,6 @@ class CourseCreator
             ];
         }
 
-        return $this->currencies->insertOrIgnore($records);
+        return $this->courses->insertOrIgnore($records);
     }
 }

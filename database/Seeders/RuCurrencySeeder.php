@@ -3,14 +3,15 @@
 namespace ArtARTs36\LaravelRuCurrency\Database\Seeders;
 
 use ArtARTs36\CbrCourseFinder\Data\CurrencyCode;
+use ArtARTs36\LaravelRuCurrency\Contracts\CurrencyRepository;
 use ArtARTs36\LaravelRuCurrency\Model\Currency;
 use Illuminate\Database\Seeder;
 
 class RuCurrencySeeder extends Seeder
 {
-    public function run(): void
+    public function run(CurrencyRepository $currencies): void
     {
-        Currency::query()->insert([
+        $currencies->insert([
             [
                 Currency::FIELD_ISO_CODE => CurrencyCode::ISO_RUB,
                 Currency::FIELD_TITLE => 'Российский рубль',
