@@ -8,8 +8,13 @@
         "illuminate/database": "^9",
         "illuminate/support": "^9",
         "illuminate/console": "^9",
-        "illuminate/config": "^9",
-        "orchestra/testbench": "^7.14"
+        "illuminate/config": "^9"
+    },
+    "require-dev": {
+        "nunomaduro/larastan": "^2.2",
+        "artarts36/php-cs-fixer-good-fixers": "^0.1.2",
+        "orchestra/testbench": "^7.14",
+        "guzzlehttp/guzzle": "^7.5"
     },
     "license": "MIT",
     "autoload": {
@@ -25,10 +30,6 @@
             "email": "temicska99@mail.ru"
         }
     ],
-    "require-dev": {
-        "nunomaduro/larastan": "^2.2",
-        "artarts36/php-cs-fixer-good-fixers": "^0.1.2"
-    },
     "scripts": {
         "lint": [
             "php-cs-fixer fix --dry-run --verbose --diff --ansi --allow-risky=yes"
