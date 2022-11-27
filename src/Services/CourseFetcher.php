@@ -5,7 +5,6 @@ namespace ArtARTs36\LaravelRuCurrency\Services;
 use ArtARTs36\CbrCourseFinder\Contracts\Finder;
 use ArtARTs36\CbrCourseFinder\Contracts\SearchException;
 use ArtARTs36\LaravelRuCurrency\Contracts\CourseCreatingException;
-use Carbon\Carbon;
 use Psr\Log\LoggerInterface;
 
 class CourseFetcher
@@ -18,6 +17,10 @@ class CourseFetcher
         //
     }
 
+    /**
+     * @throws CourseCreatingException
+     * @throws SearchException
+     */
     public function fetchOn(\DateTimeInterface $date): int
     {
         $this->logger->info('Start searching courses');
@@ -41,10 +44,12 @@ class CourseFetcher
         try {
             $created = $this->creator->createOnDefaultCurrency($courses);
         } catch (CourseCreatingException $e) {
+            $this->logger->warning(sprintf('Courses not created: %s', $e->getMessage()));
+
             throw $e;
         }
 
-        $this->logger->info("Added $created courses");
+        $this->logger->info(sprintf('Created %d courses', $created));
 
         return $created;
     }
