@@ -3,7 +3,6 @@
 namespace ArtARTs36\LaravelRuCurrency\Services;
 
 use ArtARTs36\CbrCourseFinder\Contracts\CourseCollection;
-use ArtARTs36\CbrCourseFinder\CurrencyCode;
 use ArtARTs36\LaravelRuCurrency\Contracts\CourseCreatingException;
 use ArtARTs36\LaravelRuCurrency\Contracts\CurrencyRepository;
 use ArtARTs36\LaravelRuCurrency\Exception\CurrencyNotFound;

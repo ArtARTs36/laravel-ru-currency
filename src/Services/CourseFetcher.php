@@ -30,6 +30,12 @@ class CourseFetcher
             throw $e;
         }
 
+        if ($courses->isEmpty()) {
+            $this->logger->info(sprintf('Courses at %s not found', $date->format('Y-m-d')));
+
+            return 0;
+        }
+
         $this->logger->info(sprintf('Found %d courses', $courses->count()));
 
         try {
