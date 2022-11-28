@@ -25,7 +25,7 @@ class Fetcher implements CourseFetcher
      */
     public function fetchAt(\DateTimeInterface $date): int
     {
-        $this->logger->info('Start searching courses');
+        $this->logger->info(sprintf('Start searching courses at %s', $date->format('Y-m-d')));
 
         try {
             $courses = $this->finder->findAt($date);
