@@ -6,6 +6,9 @@ use ArtARTs36\LaravelRuCurrency\Model\Course;
 
 class Recorder
 {
+    /**
+     * @return array<array<string, mixed>>
+     */
     public function createRecords(RecordingParams $params): array
     {
         $records = [];
