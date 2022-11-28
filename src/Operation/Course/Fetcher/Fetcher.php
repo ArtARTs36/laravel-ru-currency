@@ -25,35 +25,35 @@ class Fetcher implements CourseFetcher
      */
     public function fetchAt(\DateTimeInterface $date): int
     {
-        $this->logger->info(sprintf('Start searching courses at %s', $date->format('Y-m-d')));
+        $this->logger->info(sprintf('[ru-currency][CourseFetcher] Start searching courses at %s', $date->format('Y-m-d')));
 
         try {
             $courses = $this->finder->findAt($date);
         } catch (SearchException $e) {
-            $this->logger->warning(sprintf('Courses not found: %s', $e->getMessage()));
+            $this->logger->warning(sprintf('[ru-currency][CourseFetcher] Courses not found: %s', $e->getMessage()));
 
             throw $e;
         }
 
         if ($courses->courses->isEmpty()) {
-            $this->logger->info(sprintf('Courses at %s not found', $date->format('Y-m-d')));
+            $this->logger->info(sprintf('[ru-currency][CourseFetcher] Courses at %s not found', $date->format('Y-m-d')));
 
             return 0;
         }
 
         $this->logger->info(
-            sprintf('Found %d courses at actual date: %s', $courses->courses->count(), $courses->actualDate->format('Y-m-d')),
+            sprintf('[ru-currency][CourseFetcher] Found %d courses at actual date: %s', $courses->courses->count(), $courses->actualDate->format('Y-m-d')),
         );
 
         try {
             $created = $this->creator->create($courses);
         } catch (CourseCreatingException $e) {
-            $this->logger->warning(sprintf('Courses not created: %s', $e->getMessage()));
+            $this->logger->warning(sprintf('[ru-currency][CourseFetcher] Courses not created: %s', $e->getMessage()));
 
             throw $e;
         }
 
-        $this->logger->info(sprintf('Created %d courses', $created));
+        $this->logger->info(sprintf('[ru-currency][CourseFetcher] Created %d courses', $created));
 
         return $created;
     }
