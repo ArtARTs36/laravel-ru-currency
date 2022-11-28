@@ -1,6 +1,6 @@
 <?php
 
-namespace ArtARTs36\LaravelRuCurrency\Models;
+namespace ArtARTs36\LaravelRuCurrency\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -26,7 +26,7 @@ class Course extends Model
 
     public $timestamps = false;
 
-    protected $table = 'money__courses';
+    protected $table = 'ru_currency__courses';
 
     protected $fillable = [
         self::FIELD_FROM_CURRENCY_ID,

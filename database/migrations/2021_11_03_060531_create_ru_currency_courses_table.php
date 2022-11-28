@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMoneyCoursesTable extends Migration
+class CreateRuCurrencyCoursesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateMoneyCoursesTable extends Migration
      */
     public function up()
     {
-        Schema::create('money__courses', function (Blueprint $table) {
+        Schema::create('ru_currency__courses', function (Blueprint $table) {
             $table->id();
 
             $table->unsignedBigInteger('from_currency_id');
-            $table->foreign('from_currency_id')->on('money__currencies')->references('id');
+            $table->foreign('from_currency_id')->on('ru_currency__currencies')->references('id');
 
             $table->unsignedBigInteger('to_currency_id');
-            $table->foreign('to_currency_id')->on('money__currencies')->references('id');
+            $table->foreign('to_currency_id')->on('ru_currency__currencies')->references('id');
 
             $table->integer('nominal');
             $table->float('value');
@@ -38,6 +38,6 @@ class CreateMoneyCoursesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('money__courses');
+        Schema::dropIfExists('ru_currency__courses');
     }
 }

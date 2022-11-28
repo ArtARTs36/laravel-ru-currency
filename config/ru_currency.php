@@ -1,6 +1,6 @@
 <?php
 
-use ArtARTs36\CbrCourseFinder\CurrencyCode;
+use ArtARTs36\CbrCourseFinder\Data\CurrencyCode;
 
 return [
     'default' => CurrencyCode::ISO_RUB,

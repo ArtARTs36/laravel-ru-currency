@@ -2,25 +2,43 @@
     "name": "artarts36/laravel-ru-currency",
     "description": "Laravel Rus Currency",
     "type": "library",
-    "require": {
-        "php": "^7.4 | ^8.0",
-        "artarts36/cbr-course-finder": "^1.1",
-        "illuminate/database": "^8",
-        "illuminate/support": "^8",
-        "illuminate/console": "^8",
-        "illuminate/config": "^8"
-    },
     "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "ArtARTs36\\LaravelRuCurrency\\": "src/",
-            "ArtARTs36\\LaravelRuCurrency\\Database\\": "database"
-        }
-    },
     "authors": [
         {
             "name": "ArtARTs36",
             "email": "temicska99@mail.ru"
         }
-    ]
+    ],
+    "require": {
+        "php": "^8.1",
+        "artarts36/cbr-course-finder": "^2.0.0",
+        "illuminate/database": "^9",
+        "illuminate/support": "^9",
+        "illuminate/console": "^9",
+        "illuminate/config": "^9"
+    },
+    "require-dev": {
+        "nunomaduro/larastan": "^2.2",
+        "artarts36/php-cs-fixer-good-fixers": "^0.1.2",
+        "orchestra/testbench": "^7.14",
+        "guzzlehttp/guzzle": "^7.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "ArtARTs36\\LaravelRuCurrency\\": "src/",
+            "ArtARTs36\\LaravelRuCurrency\\Database\\": "database",
+            "ArtARTs36\\LaravelRuCurrency\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "lint": [
+            "php-cs-fixer fix --dry-run --verbose --diff --ansi --allow-risky=yes"
+        ],
+        "test": [
+            "vendor/phpunit/phpunit/phpunit"
+        ],
+        "stat-analyse": [
+            "./vendor/bin/phpstan analyse --memory-limit=2G"
+        ]
+    }
 }

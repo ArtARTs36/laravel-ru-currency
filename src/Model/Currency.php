@@ -1,6 +1,6 @@
 <?php
 
-namespace ArtARTs36\LaravelRuCurrency\Models;
+namespace ArtARTs36\LaravelRuCurrency\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,9 +19,10 @@ class Currency extends Model
 
     public $timestamps = false;
 
-    protected $table = 'money__currencies';
+    protected $table = 'ru_currency__currencies';
 
     protected $fillable = [
+        self::FIELD_ID,
         self::FIELD_ISO_CODE,
         self::FIELD_TITLE,
         self::FIELD_SYMBOL,
