@@ -3,8 +3,9 @@
 namespace ArtARTs36\LaravelRuCurrency\Tests\Unit;
 
 use ArtARTs36\CbrCourseFinder\Data\Course;
+use ArtARTs36\CbrCourseFinder\Data\CourseBag;
 use ArtARTs36\CbrCourseFinder\Data\CourseCollection;
-use ArtARTs36\LaravelRuCurrency\Model\Currency;
+use ArtARTs36\CbrCourseFinder\Data\CurrencyCode;
 use ArtARTs36\LaravelRuCurrency\Operation\Course\Fetcher\CourseRecorder;
 use ArtARTs36\LaravelRuCurrency\Operation\Course\Fetcher\RecordingParams;
 use ArtARTs36\LaravelRuCurrency\Tests\TestCase;
@@ -16,28 +17,40 @@ class CourseRecorderTest extends TestCase
     {
         return [
             [
-                new RecordingParams(new Collection(), 1, new CourseCollection([], new \DateTime())),
+                new RecordingParams(new Collection(), new CourseBag(new CourseCollection([]), new \DateTime(), CurrencyCode::ISO_AMD)),
                 [],
             ],
             [
                 new RecordingParams(
                     new Collection(),
-                    1,
-                    new CourseCollection([
-                        new Course('abc', '', 1, 2, 3),
-                    ], new \DateTime()),
+                    new CourseBag(
+                        new CourseCollection([
+                            new Course(new \ArtARTs36\CbrCourseFinder\Data\Currency(CurrencyCode::ISO_AMD, ''), 1, 2, 3),
+                        ]),
+                        new \DateTime(),
+                        CurrencyCode::ISO_AMD,
+                    ),
                 ),
                 [],
             ],
             [
                 new RecordingParams(
                     new Collection([
-                        'abc' => 2,
+                        CurrencyCode::ISO_AMD->value => 2,
+                        CurrencyCode::ISO_RUB->value => 1,
                     ]),
-                    1,
-                    new CourseCollection([
-                        new Course('abc', '', 1, 2, 3),
-                    ], $d = new \DateTime()),
+                    new CourseBag(
+                        new CourseCollection([
+                            new Course(
+                                new \ArtARTs36\CbrCourseFinder\Data\Currency(CurrencyCode::ISO_AMD, ''),
+                                1,
+                                2,
+                                3,
+                            ),
+                        ]),
+                        $d = new \DateTime(),
+                        CurrencyCode::ISO_RUB,
+                    ),
                 ),
                 [
                     [

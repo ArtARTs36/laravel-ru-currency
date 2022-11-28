@@ -9,7 +9,7 @@ use Illuminate\Console\Command;
 class FetchCoursesCommand extends Command
 {
     private const INPUT_OPTION_DATE_NAME = 'date';
-    private const INPUT_OPTION_DATE_FORMAT = 'y-m-d';
+    private const INPUT_OPTION_DATE_FORMAT = 'Y-m-d';
 
     protected $signature = "ru-currency:fetch-courses {--date= : Date by format y-m-d}";
 
@@ -18,7 +18,7 @@ class FetchCoursesCommand extends Command
     public function handle(CourseFetcher $fetcher): int
     {
         try {
-            $created = $fetcher->fetchOn($this->getInputDate());
+            $created = $fetcher->fetchAt($this->getInputDate());
 
             $this->info(sprintf('Created %d courses', $created));
 

@@ -3,6 +3,7 @@
 namespace ArtARTs36\LaravelRuCurrency\Operation\Course\Fetcher;
 
 use ArtARTs36\CbrCourseFinder\Contracts\CourseCollection;
+use ArtARTs36\CbrCourseFinder\Data\CourseBag;
 use Illuminate\Support\Collection;
 
 class RecordingParams
@@ -12,8 +13,7 @@ class RecordingParams
      */
     public function __construct(
         public Collection $currencies,
-        public int $toCurrencyId,
-        public CourseCollection $courses,
+        public CourseBag $courses,
     ) {
         //
     }

@@ -2,7 +2,10 @@
 
 namespace ArtARTs36\LaravelRuCurrency\Tests\Unit;
 
+use ArtARTs36\CbrCourseFinder\Data\CourseBag;
 use ArtARTs36\CbrCourseFinder\Data\CourseCollection;
+use ArtARTs36\CbrCourseFinder\Data\Currency;
+use ArtARTs36\CbrCourseFinder\Data\CurrencyCode;
 use ArtARTs36\LaravelRuCurrency\Model\Course;
 use ArtARTs36\LaravelRuCurrency\Operation\Course\Creator\CourseCreator;
 use ArtARTs36\LaravelRuCurrency\Operation\Course\Fetcher\CourseRecorder;
@@ -20,10 +23,7 @@ final class CourseCreatorTest extends TestCase
         return [
             // #1
             [
-                new CourseCollection(
-                    [],
-                    new \DateTime('2020-01-01 14:00:00')
-                ),
+                new CourseCollection([]),
                 'RUB',
                 0,
             ],
@@ -32,14 +32,12 @@ final class CourseCreatorTest extends TestCase
                 new CourseCollection(
                     [
                         new \ArtARTs36\CbrCourseFinder\Data\Course(
-                            'RUB',
-                            'RUB',
+                            new Currency(CurrencyCode::ISO_AMD, ''),
                             1.0,
                             1.0,
                             1.0,
                         ),
                     ],
-                    new \DateTime('2020-01-01 14:00:00')
                 ),
                 'RUB',
                 1,
@@ -53,22 +51,33 @@ final class CourseCreatorTest extends TestCase
      */
     public function testCreate(CourseCollection $courses, string $currencyCode, int $expected): void
     {
-        $currencyRepo = $this->mock(EloquentCurrencyRepository::class, static function (MockInterface $mock) use ($currencyCode) {
+        $currencyRepo = $this->mock(EloquentCurrencyRepository::class, static function (MockInterface $mock) use ($currencyCode, $courses) {
+            $map = [
+                $currencyCode => $id = 1,
+            ];
+
+            /** @var \ArtARTs36\CbrCourseFinder\Data\Course $course */
+            foreach ($courses as $course) {
+                $map[$course->currency->isoCode->value] = ++$id;
+            }
+
             $mock
                 ->shouldReceive('mapIdOnIsoCode')
-                ->andReturn(new Collection([
-                    $currencyCode => 1,
-                ]));
+                ->andReturn(new Collection($map));
         });
 
-        $courseRepo = $this->mock(EloquentCourseRepository::class, static function (MockInterface $mock) {
+        $courseRepo = $this->mock(EloquentCourseRepository::class, static function (MockInterface $mock) use ($expected) {
             $mock
                 ->shouldReceive('insertOrIgnore')
-                ->andReturn(1);
+                ->andReturn($expected);
         });
 
         $creator = new CourseCreator($currencyRepo, $courseRepo, new Repository(), new CourseRecorder());
 
-        self::assertEquals($expected, $creator->create($courses, $currencyCode));
+        self::assertEquals($expected, $creator->create(new CourseBag(
+            $courses,
+            new \DateTime(),
+            CurrencyCode::from($currencyCode),
+        )));
     }
 }
