@@ -7,8 +7,8 @@ use ArtARTs36\CbrCourseFinder\Data\CourseCollection;
 use ArtARTs36\CbrCourseFinder\Data\Currency;
 use ArtARTs36\CbrCourseFinder\Data\CurrencyCode;
 use ArtARTs36\LaravelRuCurrency\Model\Course;
-use ArtARTs36\LaravelRuCurrency\Operation\Course\Creator\CourseCreator;
-use ArtARTs36\LaravelRuCurrency\Operation\Course\Fetcher\CourseRecorder;
+use ArtARTs36\LaravelRuCurrency\Operation\Course\Creator\Creator;
+use ArtARTs36\LaravelRuCurrency\Operation\Course\Fetcher\Recorder;
 use ArtARTs36\LaravelRuCurrency\Repository\EloquentCourseRepository;
 use ArtARTs36\LaravelRuCurrency\Repository\EloquentCurrencyRepository;
 use ArtARTs36\LaravelRuCurrency\Tests\TestCase;
@@ -47,7 +47,7 @@ final class CourseCreatorTest extends TestCase
 
     /**
      * @dataProvider providerForTestCreate
-     * @covers CourseCreator::create
+     * @covers Creator::create
      */
     public function testCreate(CourseCollection $courses, string $currencyCode, int $expected): void
     {
@@ -72,7 +72,7 @@ final class CourseCreatorTest extends TestCase
                 ->andReturn($expected);
         });
 
-        $creator = new CourseCreator($currencyRepo, $courseRepo, new Repository(), new CourseRecorder());
+        $creator = new Creator($currencyRepo, $courseRepo, new Repository(), new Recorder());
 
         self::assertEquals($expected, $creator->create(new CourseBag(
             $courses,

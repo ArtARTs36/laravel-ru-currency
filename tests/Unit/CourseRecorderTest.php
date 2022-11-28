@@ -6,7 +6,7 @@ use ArtARTs36\CbrCourseFinder\Data\Course;
 use ArtARTs36\CbrCourseFinder\Data\CourseBag;
 use ArtARTs36\CbrCourseFinder\Data\CourseCollection;
 use ArtARTs36\CbrCourseFinder\Data\CurrencyCode;
-use ArtARTs36\LaravelRuCurrency\Operation\Course\Fetcher\CourseRecorder;
+use ArtARTs36\LaravelRuCurrency\Operation\Course\Fetcher\Recorder;
 use ArtARTs36\LaravelRuCurrency\Operation\Course\Fetcher\RecordingParams;
 use ArtARTs36\LaravelRuCurrency\Tests\TestCase;
 use Illuminate\Support\Collection;
@@ -67,11 +67,11 @@ class CourseRecorderTest extends TestCase
 
     /**
      * @dataProvider providerForTestCreateRecords
-     * @covers \ArtARTs36\LaravelRuCurrency\Operation\Course\Fetcher\CourseRecorder::createRecords
+     * @covers \ArtARTs36\LaravelRuCurrency\Operation\Course\Fetcher\Recorder::createRecords
      */
     public function testCreateRecords(RecordingParams $params, array $expected): void
     {
-        $recorder = new CourseRecorder();
+        $recorder = new Recorder();
 
         self::assertEquals($expected, $recorder->createRecords($params));
     }

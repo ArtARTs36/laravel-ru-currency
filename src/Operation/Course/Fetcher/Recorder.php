@@ -4,7 +4,7 @@ namespace ArtARTs36\LaravelRuCurrency\Operation\Course\Fetcher;
 
 use ArtARTs36\LaravelRuCurrency\Model\Course;
 
-class CourseRecorder
+class Recorder
 {
     public function createRecords(RecordingParams $params): array
     {

@@ -7,6 +7,7 @@ use ArtARTs36\CbrCourseFinder\Contracts\SearchException;
 interface CourseFetcher
 {
     /**
+     * Fetch courses at date.
      * @throws CourseCreatingException
      * @throws SearchException
      */
